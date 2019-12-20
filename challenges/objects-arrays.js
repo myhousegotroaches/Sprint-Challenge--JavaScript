@@ -151,7 +151,7 @@ console.log(contactInfo);
 const unisWithUni = [];
 
 for (i = 0; i < graduates.length; i++) {
-  if (graduates[i].university === "uni") {
+  if (graduates[i].university.includes("Uni")) {
     unisWithUni.push(graduates[i]);
   }
 }
@@ -231,6 +231,11 @@ The zoos want to display both the scientific name and the animal name in front o
 
 */
 const displayNames = [];
+
+const anotherTest = zooAnimals.forEach(function(zooanimals) {
+  return `${zooAnimals.animal_name} ${zooAnimals.scientific_name}`;
+});
+displayNames.push(anotherTest);
 console.log(displayNames);
 
 /* Request 2: .map()
@@ -240,6 +245,17 @@ The zoos need a list of all their animal's names (animal_name only) converted to
 */
 
 const lowCaseAnimalNames = [];
+/*
+for (let i = 0; i < zooAnimals.length; i++) {
+  lowCaseAnimalNames.push(zooAnimals[i].animal_name);
+}*/
+let 
+
+function test2(){
+  for (let i = 0; i < zooAnimals.length; i++) {
+    lowCaseAnimalNames.push(zooAnimals[i].animal_name);
+}
+
 console.log(lowCaseAnimalNames);
 
 /* Request 3: .filter() 
@@ -248,6 +264,17 @@ The zoos are concerned about animals with a lower population count. Using filter
 
 */
 const lowPopulationAnimals = [];
+
+//for (i = 0; i < zooAnimals.length; i++) {
+//if (zooAnimals[i].population < 5) {
+// lowPopulationAnimals.push(zooAnimals[i]);
+//}
+//}
+
+const test = zooAnimals.filter(function(zooAnimals) {
+  return zooAnimals.population < 5;
+});
+lowPopulationAnimals.push(test);
 console.log(lowPopulationAnimals);
 
 /* Request 4: .reduce() 
@@ -255,7 +282,11 @@ console.log(lowPopulationAnimals);
 The zoos need to know their total animal population across the United States. Find the total population from all the zoos using the .reduce() method. Remember the reduce method takes two arguments: a callback (which itself takes two args), and an initial value for the count.
 
 */
-const populationTotal = 0;
+let populationTotal = 0;
+
+for (let i = 0; i < zooAnimals.length; i++) {
+  populationTotal += zooAnimals[i].population;
+}
 
 console.log(populationTotal);
 
