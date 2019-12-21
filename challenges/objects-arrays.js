@@ -230,12 +230,15 @@ const zooAnimals = [
 The zoos want to display both the scientific name and the animal name in front of the habitats. Populate the displayNames array with only the animal_name and scientific_name of each animal. displayNames will be an array of strings, and each string should follow this pattern: "Name: Jackal, asiatic, Scientific: Canis aureus."
 
 */
+
 const displayNames = [];
 
-const anotherTest = zooAnimals.forEach(function(zooanimals) {
-  return `${zooAnimals.animal_name} ${zooAnimals.scientific_name}`;
+zooAnimals.forEach(function(bthnames) {
+  return displayNames.push(
+    `Name: ${bthnames.animal_name}, Scientific: ${bthnames.scientific_name}`
+  );
 });
-displayNames.push(anotherTest);
+
 console.log(displayNames);
 
 /* Request 2: .map()
@@ -244,17 +247,18 @@ The zoos need a list of all their animal's names (animal_name only) converted to
 
 */
 
-const lowCaseAnimalNames = [];
+let lowCaseAnimalNames = [];
+
 /*
 for (let i = 0; i < zooAnimals.length; i++) {
   lowCaseAnimalNames.push(zooAnimals[i].animal_name);
 }*/
-let 
 
-function test2(){
-  for (let i = 0; i < zooAnimals.length; i++) {
-    lowCaseAnimalNames.push(zooAnimals[i].animal_name);
-}
+const lowercasen = zooAnimals.map(function(animalstolower) {
+  return animalstolower.animal_name.toLowerCase();
+});
+
+lowCaseAnimalNames = lowercasen;
 
 console.log(lowCaseAnimalNames);
 
@@ -284,10 +288,14 @@ The zoos need to know their total animal population across the United States. Fi
 */
 let populationTotal = 0;
 
-for (let i = 0; i < zooAnimals.length; i++) {
+/*for (let i = 0; i < zooAnimals.length; i++) {
   populationTotal += zooAnimals[i].population;
-}
+}*/
 
+const poptot = zooAnimals.reduce(function(test1, test2) {
+  return (test1 += test2.population);
+}, 0);
+populationTotal = poptot;
 console.log(populationTotal);
 
 /*
